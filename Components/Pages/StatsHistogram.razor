@@ -1,0 +1,45 @@
+@using ApexCharts
+@* component for the histogram in the statistics section *@
+
+<ApexChart TItem="MyData"
+           Title="Match Data"
+           Options="opts">
+
+    <ApexPointSeries TItem="MyData"
+                     Items="Data"
+                     Name="Number of Pairs"
+                     SeriesType="SeriesType.Bar"
+                     XValue="e => e.years"
+                     YValue="e => e.Count" />
+
+</ApexChart>
+    
+@code {
+    [Parameter]
+    public List<MyData> Data { get; set; } = new();
+    public static string BarColor { get; set; } = "#00539B"; // duke blue
+
+
+    public class MyData
+    {
+        public string years { get; set; }
+        public int Count { get; set; }
+    }
+
+    private ApexChartOptions<MyData> opts = new ApexChartOptions<MyData>
+    {
+        Xaxis = new XAxis {
+            Title = new AxisTitle {
+                Text = "Alumni Graduation Year"
+            }
+        },
+        Yaxis = new List<YAxis> {
+            new YAxis {
+                Title = new AxisTitle {
+                    Text = "Number of Alumni"
+                }
+            }
+        },
+        Colors = new List<string> { BarColor } 
+    };
+}

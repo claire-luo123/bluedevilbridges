@@ -1,0 +1,231 @@
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 7.38807324335973937500 at 0 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 16.281946112472038137755102040 at 0 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 52.553856845599146666666666670 at 0 2
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 7.2963688605644688333333333300 at 0 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 14.362937064400368182870370370 at 0 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 29.139928409789793827806122450 at 0 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 24.476595969043688880208333330 at 0 6
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 12.483606453545810286458333330 at 0 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 33.518695959320875310049019610 at 0 8
+7/10/2024 2:19:26 PM: Mentor location not in list: Michigan
+7/10/2024 2:19:26 PM: Score is 23.928194343647639203431372550 at 0 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 51.663398269106509500 at 1 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 20.663149461477585009444444440 at 1 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 12.038698089189207590909090910 at 1 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 38.024543834316477042682926830 at 1 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 31.914198521199645192500 at 1 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 33.259152277806202019444444440 at 1 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 22.612090020691223704545454550 at 1 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 29.103839589968845170454545450 at 1 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 30.618179448747166728723404260 at 1 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Texas
+7/10/2024 2:19:26 PM: Score is 33.301523419249862553191489360 at 1 9
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 14.230678086247627350961538460 at 2 0
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 38.729496816776868430851063830 at 2 1
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 24.073483479774200543478260870 at 2 2
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 29.394204133386555340116279070 at 2 3
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 29.076833041713370389423076920 at 2 4
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 21.090276204469263085106382980 at 2 5
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 23.204874418425066365489130430 at 2 6
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 23.291851870883177364130434780 at 2 7
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 27.095274380217416122448979590 at 2 8
+7/10/2024 2:19:26 PM: Mentor minor not in list: Energy Engineering*
+7/10/2024 2:19:26 PM: Mentor location not in list: California
+7/10/2024 2:19:26 PM: Score is 15.497635087591379653061224490 at 2 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 34.540227068280760888636363640 at 3 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 35.598584918166208490384615380 at 3 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 8.400040452011317796052631580 at 3 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 50.062600276748264294642857140 at 3 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 15.764603580933033340909090910 at 3 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 32.819787353728078461538461540 at 3 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 34.020572116354082549342105260 at 3 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 17.240008150556461106578947370 at 3 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 27.422932631955056798780487800 at 3 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Ohio
+7/10/2024 2:19:26 PM: Score is 29.035598144120059190853658540 at 3 9
+7/10/2024 2:19:26 PM: Score is 17.769277851315923203804347830 at 4 0
+7/10/2024 2:19:26 PM: Score is 21.0900212767174762500 at 4 1
+7/10/2024 2:19:26 PM: Score is 36.14452916107147554687500 at 4 2
+7/10/2024 2:19:26 PM: Score is 19.431901818107091148648648650 at 4 3
+7/10/2024 2:19:26 PM: Score is 15.140578958300623418478260870 at 4 4
+7/10/2024 2:19:26 PM: Score is 40.509772851359855929878048780 at 4 5
+7/10/2024 2:19:26 PM: Score is 29.445997134338952437500 at 4 6
+7/10/2024 2:19:26 PM: Score is 17.240090530810837800 at 4 7
+7/10/2024 2:19:26 PM: Score is 38.061409211936940123546511630 at 4 8
+7/10/2024 2:19:26 PM: Score is 12.755105570375484069767441860 at 4 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 19.791079481810269959821428570 at 5 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 42.362750882896891458333333330 at 5 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 19.398434584419609800 at 5 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 22.456328490779764893617021280 at 5 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 39.07802066316165020312500 at 5 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 19.749210684231998985294117650 at 5 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 22.49040475484207512500 at 5 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 38.13923773925401858500 at 5 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 22.764340194654214339622641510 at 5 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Florida
+7/10/2024 2:19:26 PM: Score is 20.743583992901303379716981130 at 5 9
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 29.943125375157169571428571430 at 6 0
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 23.440114271408454440340909090 at 6 1
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 27.320408026570306046511627910 at 6 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 34.0411789510047477500 at 6 3
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 17.646255985311518099489795920 at 6 4
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 40.135915240576347630681818180 at 6 5
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 16.742226461548971546511627910 at 6 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 17.195555579148076526162790700 at 6 7
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 41.566874510913787872282608700 at 6 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: New York
+7/10/2024 2:19:26 PM: Score is 14.560500156225493097826086960 at 6 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 34.239645258124097573138297870 at 7 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 28.542328774042714709523809520 at 7 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 6.104956674586378725609756100 at 7 2
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 30.477393500956674333881578950 at 7 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 41.981138732004185638297872340 at 7 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 14.529570061504496279761904760 at 7 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 30.728516966048646727134146340 at 7 6
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 33.196845664154109984756097560 at 7 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 11.760961408330816676136363640 at 7 8
+7/10/2024 2:19:26 PM: Mentor location not in list: Virginia
+7/10/2024 2:19:26 PM: Score is 32.777828768216893039772727270 at 7 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 5.2982882562589136344339622600 at 8 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 30.1345481037364409960937500 at 8 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 52.437767488927146808510638300 at 8 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 10.600772989302647386363636360 at 8 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 17.4827810569496402500 at 8 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 30.580981671312432161458333330 at 8 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 38.463020917472062220744680850 at 8 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 16.136418414164446622340425530 at 8 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 38.2461170431656536687500 at 8 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Washington
+7/10/2024 2:19:26 PM: Score is 21.687931737142463542500 at 8 9
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 36.457389284958662335937500 at 9 0
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 29.424249005558639156976744190 at 9 1
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 30.952380952380952380952380950 at 9 2
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 34.799819699875736990384615380 at 9 3
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 12.677834079393077242187500 at 9 4
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 45.99766960912469562500 at 9 5
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 29.2961082477623429687500 at 9 6
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 11.839091286047533166666666670 at 9 7
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 39.269241409000462416666666670 at 9 8
+7/10/2024 2:19:26 PM: Mentee minor not in list: Machine Learning & Artificial Intelligence
+7/10/2024 2:19:26 PM: Mentor location not in list: Tennessee
+7/10/2024 2:19:26 PM: Score is 22.738259029708951452777777780 at 9 9
+7/10/2024 2:19:26 PM: Max Score is :52.553856845599146666666666670 at 0, 2
+7/10/2024 2:19:26 PM: StartMatching method called
+7/10/2024 2:19:26 PM: StartMatching method finished calling
+7/10/2024 2:19:26 PM: Matched Mentor 1 with Mentee 3.
+7/10/2024 2:19:26 PM: Matched Mentor 2 with Mentee 1.
+7/10/2024 2:19:26 PM: Matched Mentor 3 with Mentee 2.
+7/10/2024 2:19:27 PM: Matched Mentor 4 with Mentee 4.
+7/10/2024 2:19:27 PM: Matched Mentor 5 with Mentee 6.
+7/10/2024 2:19:27 PM: Matched Mentor 6 with Mentee 8.
+7/10/2024 2:19:27 PM: Matched Mentor 7 with Mentee 9.
+7/10/2024 2:19:27 PM: Matched Mentor 8 with Mentee 5.
+7/10/2024 2:19:27 PM: Matched Mentor 9 with Mentee 7.
+7/10/2024 2:19:27 PM: Matched Mentor 10 with Mentee 10.
+7/10/2024 2:19:27 PM: Index is: 10
+7/10/2024 2:19:27 PM: Finished CalculateScores

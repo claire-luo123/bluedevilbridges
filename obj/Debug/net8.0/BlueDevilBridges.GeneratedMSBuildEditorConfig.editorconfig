@@ -1,0 +1,107 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BlueDevilBridges
+build_property.RootNamespace = BlueDevilBridges
+build_property.ProjectDir = /Users/claire/Documents/blue-devil-bridges-copy/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/claire/Documents/blue-devil-bridges-copy
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Header.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9IZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/BarChart.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9CYXJDaGFydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/DatabaseTest.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXRhYmFzZVRlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/JsTest.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Kc1Rlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/LogFile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Mb2dGaWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/NewHome.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9OZXdIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/NewPairing.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9OZXdQYWlyaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/OldHome.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9PbGRIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/PairingResults.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QYWlyaW5nUmVzdWx0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/Past-Matches.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QYXN0LU1hdGNoZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/PastPairingsDropDown.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QYXN0UGFpcmluZ3NEcm9wRG93bi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/PieChart.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QaWVDaGFydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/Scroll.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TY3JvbGwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/Statistics.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TdGF0aXN0aWNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/StatsBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TdGF0c0Jhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Pages/StatsHistogram.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TdGF0c0hpc3RvZ3JhbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-jcxkuis2fg
+
+[/Users/claire/Documents/blue-devil-bridges-copy/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4uv9e3pmvi

@@ -1,0 +1,22 @@
+﻿@page "/jstest"
+
+<h1 class="m-3">JS Test</h1>
+
+<div class="row m-3 align-items-center">
+	<div class="col-auto">
+		<input class="form-control" type="text" placeholder="Enter value" @bind-value="_value" />
+	</div>
+	<div class="col-auto">
+		<button class="btn btn-primary btn-sm" @onclick="ConsoleLog">Log to console</button>
+	</div>
+</div>
+
+@code {
+	private string _value;
+
+	public void ConsoleLog()
+	{
+		// call JavaScript's console.log() function and pass it a string value
+		js.InvokeVoidAsync("console.log", _value);
+	}
+}

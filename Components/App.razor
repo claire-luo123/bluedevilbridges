@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<base href="/" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="app.css" />
+	<link rel="stylesheet" href="BlueDevilBridges.styles.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+	<HeadOutlet @rendermode="new InteractiveServerRenderMode(prerender: false)" />
+</head>
+
+<body>
+	<Routes @rendermode="new InteractiveServerRenderMode(prerender: false)" User="@_user" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>
+
+@code {
+	[CascadingParameter]
+	private HttpContext _httpContext { get; set; }
+
+	private List<string> _allowedNetIds;
+	private User _user;
+
+	protected override void OnInitialized()
+	{
+		// set netids with access to this website
+		_allowedNetIds = new List<string> { "jco21", "lph18", "jy386", "cyl15", "ew119", "fgs6", "bland007" };
+
+		// save netid and name received from shibboleth login
+		_user = new();
+		_user.NetId = _httpContext.Request.Headers["uid"];
+		_user.FullName = _httpContext.Request.Headers["displayName"];
+
+		// prod: only allow specified netids; otherwise: allow for local development
+		_user.IsAllowed = env.IsProduction() ? _allowedNetIds.Contains(_user.NetId) : true;
+	}
+}

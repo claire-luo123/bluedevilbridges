@@ -1,0 +1,103 @@
+﻿@page "/dbtest"
+@using Models
+
+<h1>Test Records</h1>
+
+<div class="btn-group mb-2" role="group" aria-label="Actions">
+	<button type="button" class="btn btn-outline-success" @onclick="AddTestRecord">
+		Add Test Record
+		<span class="badge text-bg-success">@testRecordsCount</span>
+	</button>
+	<button type="button" class="btn btn-outline-success" @onclick="AddTestRecord1">
+		Add Iteration Record
+		<span class="badge text-bg-success">@testRecordsCount</span>
+	</button>
+	<button type="button" class="btn btn-outline-success" @onclick="AddTestRecord2">
+		Add Pair Record
+		<span class="badge text-bg-success">@testRecordsCount</span>
+	</button>
+	<button type="button" class="btn btn-outline-danger" @onclick="DeleteTestRecords">Delete All Test Records</button>
+</div>
+
+@foreach (var testRecord in testRecords)
+{
+	<div class="card p-2 m-3" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">@testRecord.Name</h5>
+			@if (testRecord.Major.Any())
+			{
+				<ul class="list-group">
+					@foreach (var major in testRecord.Major)
+					{
+						<li class="list-group-item">@major</li>
+					}
+				</ul>
+			}
+		</div>
+	</div>
+}
+
+@code {
+	private int testRecordsCount;
+	private List<TestRecord> testRecords = new();
+
+
+	protected override void OnInitialized()
+	{
+		GetTestRecords();
+	}
+
+	public void AddTestRecord()
+	{
+		var testRecord = new PastMatchesRecord() { Name = "Vincent Price", AverageSimScore=.3 };
+		blueDevilBridgesContext.Add(testRecord);
+		blueDevilBridgesContext.SaveChanges();
+		GetTestRecords();
+
+		// add list of objects to database table
+		//blueDevilBridgesContext.AddRange(testRecords);
+		//blueDevilBridgesContext.SaveChanges();
+	}
+	public void AddTestRecord1()
+	{
+		var testRecord = new PastMatchesRecord() {AverageSimScore=.8, MatchDate=DateTime.UtcNow};
+		blueDevilBridgesContext.Add(testRecord);
+		blueDevilBridgesContext.SaveChanges();
+		GetTestRecords();
+
+		// add list of objects to database table
+		//blueDevilBridgesContext.AddRange(testRecords);
+		//blueDevilBridgesContext.SaveChanges();
+	}
+		public void AddTestRecord2()
+	{
+		var testRecord = new PairingRecord() { MentorID=1, MentorName="Bob Marley", MentorEmail="123@456.com",MenteeID=1, MenteeName="Bob Marley", MenteeEmail="123@456.com", SimilarityScore=.1,IterationID=34};
+		blueDevilBridgesContext.Add(testRecord);
+		blueDevilBridgesContext.SaveChanges();
+		GetTestRecords();
+
+		// add list of objects to database table
+		//blueDevilBridgesContext.AddRange(testRecords);
+		//blueDevilBridgesContext.SaveChanges();
+	}
+
+	public void GetTestRecords()
+	{
+		testRecords = blueDevilBridgesContext.TestRecords.ToList();
+		testRecordsCount = testRecords.Count;
+
+		var testRecordsFiltered = blueDevilBridgesContext.TestRecords.Where(a => a.Name == "Vince Price" && a.Major.Count == 2).ToList();
+	}
+
+	public void DeleteTestRecords()
+	{
+		blueDevilBridgesContext.TestRecords.ExecuteDelete();
+		blueDevilBridgesContext.AlumniRecords.ExecuteDelete();
+        blueDevilBridgesContext.StudentRecords.ExecuteDelete();
+        blueDevilBridgesContext.PairingRecords.ExecuteDelete();
+		blueDevilBridgesContext.PastMatchesRecords.ExecuteDelete();
+        blueDevilBridgesContext.SaveChanges();
+		GetTestRecords();
+
+	}
+}

@@ -1,0 +1,465 @@
+@page "/"
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components
+@using System.IO;
+@using System.Threading.Tasks;
+@inject IWebHostEnvironment WebHostEnvironment
+@inject IJSRuntime JS
+@inject PairingStatisticsService PairingStatisticsService
+@inject PairScore _pairScore
+@using Data_analytics
+<head>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .row.boxes {
+            background-color: white;
+            border-radius: 10px;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            margin: auto;
+            border: 1px solid lightgray;
+        }
+        .boxheaders {
+            text-align: center;
+            font-weight: bold;
+            color: #012169;
+            margin-top: 10px;
+        }
+        .texts {
+            text-align: center;
+            color: #012169;
+            margin-top: 10px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        #warningtext{
+            font-style: italic;
+        }
+        #downloadtext{
+            font-weight: bold;
+        }
+        .btn {
+            width: 100%;
+            margin-bottom: 2px;
+            font-size: 1.25rem;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn span {
+            margin-left: 11px; /* Adjust spacing between icon and text */
+        }
+        .bigbox {
+            margin-bottom: 30px;
+        }
+        .btn-disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        .header-banner {
+            padding: 0;
+            margin: 0;
+        }
+        .intro-section {
+            margin-bottom: 20px;
+        }
+        .load {
+            width: 200px; /* Adjust the width as needed */
+            color: white; /* Text color */
+            border: none;
+            padding: 10px 20px; /* Padding for the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: #012169;
+        }
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+
+    </style>
+        <style>
+        .spinner {
+            border: 16px solid silver;
+            border-top: 16px solid #337AB7;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 700ms linear infinite;
+            top: 40%;
+            left: 55%;
+            position: absolute;
+        }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+    <script>
+        window.preventPageUnload = function (shouldWarn) {
+            if (shouldWarn) {
+                window.onbeforeunload = function () {
+                    return "Closing this page will interrupt the pairing process and cause issues with matches.";
+                };
+            } else {
+                window.onbeforeunload = null;
+            }
+        };
+    </script>
+</head>
+
+
+<Header Title="Blue Devil Bridges" />
+
+@* upload files buttons and start pairing *@
+
+<div class="bigbox px-4">
+    <div>
+      @if (string.IsNullOrWhiteSpace(User.FullName) == false)
+    {
+        <p>Hi, @User.FirstName!</p>
+        
+    }  
+    </div>
+    <div class="row boxes">
+        <div class="col-3">
+            <h3 class="boxheaders">Start Matching</h3>
+            <div class="button-group">
+                <div class="file-upload">
+                    <label class="btn @((mentorUploaded) ? "btn-success" : "btn-primary")">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                        </svg>
+                        <span>Upload Mentor Survey</span>
+                        <InputFile OnChange="HandleMentorFileSelected" accept=".csv"style="display: none;" />
+                    </label>
+                </div>
+                <div class="file-upload">
+                    <label class="btn @((menteeUploaded) ? "btn-success" : "btn-primary")">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                        </svg>
+                        <span>Upload Mentee Survey</span><InputFile OnChange="HandleMenteeFileSelected" accept=".csv" style="display: none;" />
+                    </label>
+                </div>
+                <button type="button" class="btn @((mentorUploaded && menteeUploaded) ? "btn-primary" : "btn-disabled")" @onclick="StartPairing" disabled="@(mentorUploaded && menteeUploaded ? false : true)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+                        <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707zM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1zM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707zM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0z"/>
+                    </svg>
+                    <span>Start Pairing!</span>
+                </button>
+            </div>
+            @if (pairingComplete&&pairingStarted)
+            {
+                <PairingResults Status="@status" OutputFile="@outputFile" />
+                <LogFile OutputFile="/logs.txt"/>
+            }
+        </div>
+        <div class="col-9">
+            @* display plot and at a glance statistics if pairing is complete *@
+            @if(pairingComplete){
+                <h3 class="boxheaders">Matches successfully made!</h3>
+               <StatsBar simScore="getSimScores()" avg="@newestMatch.AverageSimScore" total="newestMatch.NumOfPairs" mentees="@newestMatch.NumOfMentees"mentors="@newestMatch.NumOfMentors"max="@newestMatch.MaxSimScore"min="@newestMatch.MinSimScore" /> 
+               <button class="btn btn-danger" @onclick="Rerun">
+                    Rerun Algorithm
+               </button>
+            }
+            //loading symbol when pairing is in process
+            else if(!pairingComplete&&pairingStarted){
+                <div class="spinner"></div>
+            }
+            //text to be displayed before pairing is complete
+            else{
+                <div class="center-container">
+                    <p class="texts" id=warningtext>Note that file types must be in CSV format for both mentor and mentee data. </p>
+                    <p class="texts" id=warningtext>Once both files are uploaded, press "Start Pairing!" to obtain matches.</p>
+                    <p class="texts" id=downloadtext>
+                        *Results will display here after generating matches
+                    </p>
+                    
+                </div>
+            }
+        </div>
+    </div>
+    @if(pairingComplete){
+        <div class="mt-4"> <!-- Margin-top utility class for spacing -->
+        @* call statistics component *@
+            <Statistics PairingComplete="@pairingComplete" mostRecentID="@newestMatch.Id"/>
+        </div>
+    }
+    <div class="mt-4"> <!-- Margin-top utility class for spacing -->
+        @* call past pairings dropdown component *@
+        <PastPairingsDropDown OnClickCallback="LoadPastPairing"/>
+    </div>
+</div>
+
+
+
+@code {
+    [CascadingParameter(Name = "User")]
+    public User User { get; set; }
+
+    private string status = "";
+    private IBrowserFile mentor;
+    private IBrowserFile mentee;
+    private string outputFile;
+    private decimal[,] scores;
+    public bool pairingComplete = false;
+    private bool mentorUploaded = false;
+    private bool menteeUploaded = false;
+    private bool showResults = false; // New boo
+    private int pairAmnt=0;
+    private bool pairingStarted=false;  
+    private PastMatchesRecord newestMatch;
+    private int timeKeeper=0;
+
+
+    protected override void OnInitialized(){
+        List<PastMatchesRecord> PM= blueDevilBridgesContext.PastMatchesRecords.ToList();
+        if(PM.Count==0){
+            var testRecord = new PastMatchesRecord() {Name="Placeholder",Id=1, MatchDate=DateTime.UtcNow};
+            blueDevilBridgesContext.Add(testRecord);
+		    blueDevilBridgesContext.SaveChanges();
+        }
+    }
+    private void LoadPastPairing(int id){
+        newestMatch=blueDevilBridgesContext.PastMatchesRecords.FirstOrDefault(a=>a.Id==id);
+        pairingComplete = true;
+
+    }
+    //validate format of uploaded files and save to csv files
+    private async Task HandleMentorFileSelected(InputFileChangeEventArgs e)
+    {
+        mentor = e.File;
+        await SaveFileAsync(mentor, "Mentor_Survey.csv");
+        mentorUploaded = await ValidateFile(mentor);
+    }
+
+    private async Task HandleMenteeFileSelected(InputFileChangeEventArgs e)
+    {
+        mentee = e.File;
+        await SaveFileAsync(mentee, "Mentee_Survey.csv");
+        menteeUploaded = await ValidateFile(mentee);
+    }
+
+    private async Task<bool> ValidateFile(IBrowserFile file)
+    {
+        string format = "text/csv";  
+        if (file.ContentType != format)
+        {
+            await JS.InvokeVoidAsync("alert", "Please upload a valid CSV file.");
+            return false;
+        }
+
+        using var reader = new StreamReader(file.OpenReadStream(10000000));
+        string headerLine = await reader.ReadLineAsync();
+        var headers = headerLine.Split(',');
+        if (headers.Length != 23)
+        {
+            await JS.InvokeVoidAsync("alert", "The file must contain exactly 25 columns.");
+            return false;
+        }
+        int counter=0;
+        string line;
+        while ((line = await reader.ReadLineAsync()) != null)
+        {
+            counter++;
+            var columns = line.Split(',');
+
+            if (columns.Length != 23)
+            {
+                await JS.InvokeVoidAsync("alert", "Each row must contain exactly 25 columns.");
+                return false;
+            }
+
+            // Check Name
+            if (string.IsNullOrWhiteSpace(columns[0]))
+            {
+                await JS.InvokeVoidAsync("alert", "The second column must be a non-empty string for Names.");
+                return false;
+            }
+
+            // Check Email
+            if (string.IsNullOrWhiteSpace(columns[1]))
+            {
+                await JS.InvokeVoidAsync("alert", "The third column must be a non-empty string for Emails.");
+                return false;
+            }
+        }
+        if(counter>timeKeeper){
+            timeKeeper=counter;
+        }
+        await JS.InvokeVoidAsync("alert", "File content is acceptable.");
+        return true;
+    }
+    //save uploaded files
+    private async Task SaveFileAsync(IBrowserFile e, string fileName)
+    {
+        if (e == null)
+        {
+            status = $"No file selected for {fileName}.";
+            return;
+        }
+        var filePath = Path.Combine(WebHostEnvironment.WebRootPath, "uploadedCSVs", fileName);
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        {
+            try{
+                await e.OpenReadStream(10000000).CopyToAsync(fileStream);
+            }
+            catch(Exception ex){
+                Console.WriteLine($"Failed to upload {fileName}: {ex.Message}");
+            }
+            
+        }
+        status = $"{fileName} successfully uploaded!";
+        Console.WriteLine(status);
+        
+    }
+
+    private async Task StartPairing()
+    {
+        if (mentor == null || mentee == null)
+        {
+            status = "Please upload BOTH Mentor and Mentee survey files in order to start generate pairings.";
+            return;
+        }
+        
+        pairingStarted=true; //change status
+        pairingComplete=false;
+        double time=timeKeeper*timeKeeper*0.01;
+        string timeAlert ="";
+        if(time<1){
+            timeAlert="Do not close this page, matching will take less than a second";
+        }
+        else if(time<60){
+            timeAlert="Do not close this page, matches will take up to a minute to process";
+        }
+        else if(time<3600){
+            int minutes=(int)Math.Round(time/60);
+            timeAlert=$"Do not close this page, matches will take about {minutes} minutes to process";
+        }
+        else{
+            int hours = (int)Math.Round(time/3600);
+            timeAlert=$"Do not close this page, matches will take about {hours} hours to process";
+        }
+        await JS.InvokeVoidAsync("alert", timeAlert);
+        await JS.InvokeVoidAsync("preventPageUnload", true);
+        await Pair(); //call Pair() method
+        
+        //PairingStatisticsService.UpdateStatistics();
+        newestMatch=GetMostRecentMatchRecord();
+        pairingComplete = true;
+        
+        //update variables
+        PairingStatisticsService.StatisticsAvailable = true;
+        PairingStatisticsService.LastUpdated = DateTime.Now;
+        await JS.InvokeVoidAsync("preventPageUnload", false);
+        StateHasChanged();
+        
+    }
+
+    
+
+    private async Task Pair()
+    {
+        status = "Pairing process in progress...";
+        try
+        {
+            var result = await _pairScore.CalculateScores(mentor, mentee); //call CalculateScores method from PairScore.cs
+            if (result == null || result.GetLength(0) == 0 || result.GetLength(1) == 0)
+            {
+                status = "Pairing failed: Invalid score data.";
+                return;
+            }
+            status = "Pairing done";
+            string filePath = Path.Combine(WebHostEnvironment.WebRootPath, "results.csv");
+            List<string> lines = new List<string>();
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                List<string> lineValues = new List<string>();
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    lineValues.Add(result[i, j].ToString());
+                }
+                lines.Add(string.Join(",", lineValues));
+            }
+            await File.WriteAllLinesAsync(filePath, lines);
+            outputFile = "/results.csv"; //write results to results.csv
+        }
+        catch (Exception ex)
+        {
+            status = $"Error occurred during pairing: {ex.Message}";
+        }
+    }
+
+    //reset variable values to rerun algorithm
+    private async Task Rerun(){
+        pairingComplete=false;
+        mentorUploaded = false;
+        menteeUploaded = false;
+        mentor=null;
+        mentee=null;
+        await JS.InvokeVoidAsync("reloadPage");
+
+    }
+
+    //get past matches from the most recent algorithm iteration
+    public PastMatchesRecord GetMostRecentMatchRecord(){
+        var mostRecentRecord = blueDevilBridgesContext.PastMatchesRecords
+            .OrderByDescending(record => record.Id)
+            .FirstOrDefault();
+
+        if (mostRecentRecord == null)
+        {
+            // Handle the case where no records are found
+            //Console.WriteLine("No match records found.");
+        }
+
+        return mostRecentRecord;
+    }
+
+    //delete records from all database tables to rerun
+    public void DeleteRecords(){
+		blueDevilBridgesContext.AlumniRecords.ExecuteDelete();
+        blueDevilBridgesContext.StudentRecords.ExecuteDelete();
+        blueDevilBridgesContext.PairingRecords.ExecuteDelete();
+        blueDevilBridgesContext.SaveChanges();
+
+	}
+
+    //get similarity scores from the pairing records from the most recent iteration
+    public List<double> getSimScores(){
+        List<double> simScores =new List<double>();
+        List<PairingRecord> pairs=blueDevilBridgesContext.PairingRecords.Where(a=>a.IterationID==newestMatch.Id).ToList();
+        foreach(var record in pairs){
+            simScores.Add(record.SimilarityScore);
+        }
+        pairAmnt=simScores.Count();
+        return simScores;
+    }
+}

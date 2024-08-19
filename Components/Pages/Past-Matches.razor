@@ -1,0 +1,117 @@
+@page "/past-matches"
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Matches</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .text {
+            font-family: 'Open Sans', sans-serif;  /* not updating */
+            color: #012169;
+            text-align: left;
+        }
+        .custom-container {
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding: 20px; /* Optional: Add padding */
+        }
+        .custom-row {
+            background-color: rgb(189, 190, 194);
+            padding: 20px; /* Increase the size of the rectangle */
+            border-radius: 15px; /* Rounded edges */
+            margin-top: 20px; /* Optional: to add some space above the row */
+        }
+        .custom-row .col, .custom-row label {
+            display: flex;
+            align-items: center; /* Center vertically */
+        }
+    </style>
+</head>
+<body>
+    <div class="row d-flex justify-content-center">
+            <h1 class="text-center text">
+                Past Matches
+            </h1>
+        </div>
+    <div class="container custom-container">
+        <div class="row custom-row">
+            <div class="col">
+                <label>June 10, 2024</label>
+            </div>
+            <div class="col">
+                <a href="blank-sheet.csv" class="text" download="match-data.csv">
+                    Download Match Data CSV
+                </a>
+            </div>
+            <div class="col">
+                <a href="statistics.pdf" class="text" download="match-statistics.pdf">
+                    Download Match Statistics PDF
+                </a>
+            </div>
+            <div class="col">
+                <a href="feedback.pdf" class="text" download="match-feedback.pdf">
+                    Download Match Feedback PDF
+                </a>
+            </div>
+        </div>
+        <div class="row custom-row">
+            <div class="col">
+                <label>May 31, 2024</label>
+            </div>
+            <div class="col">
+                <a href="blank-sheet.csv" class="text" download="match-data.csv">
+                    Download Match Data CSV
+                </a>
+            </div>
+            <div class="col">
+                <a href="statistics.pdf" class="text"download="match-statistics.pdf">
+                    Download Match Statistics PDF
+                </a>
+            </div>
+            <div class="col">
+                <a href="feedback.pdf" class="text"download="match-feedback.pdf">
+                    Download Match Feedback PDF
+                </a>
+            </div>
+        </div>
+        <div class="row custom-row">
+            <div class="col">
+                <label>September 29, 2023</label>
+            </div>
+            <div class="col">
+                <a href="blank-sheet.csv" class="text"download="match-data.csv">
+                    Download Match Data CSV
+                </a>
+            </div>
+            <div class="col">
+                <a href="statistics.pdf" class="text"download="match-statistics.pdf">
+                    Download Match Statistics PDF
+                </a>
+            </div>
+            <div class="col">
+                <a href="feedback.pdf" class="text"download="match-feedback.pdf">
+                    Download Match Feedback PDF
+                </a>
+            </div>
+        </div>
+        <div class="row custom-row">
+            <div class="col">
+                <label>September 19, 2023</label>
+            </div>
+            <div class="col">
+                <a href="blank-sheet.csv" class="text"download="match-data.csv">
+                    Download Match Data CSV
+                </a>
+            </div>
+            <div class="col">
+                <a href="statistics.pdf" class="text"download="match-statistics.pdf">
+                    Download Match Statistics PDF
+                </a>
+            </div>
+            <div class="col">
+                <a href="feedback.pdf" class="text"download="match-feedback.pdf">
+                    Download Match Feedback PDF
+                </a>
+            </div>
+        </div>
+    </div>
+</body>

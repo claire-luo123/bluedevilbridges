@@ -1,0 +1,485 @@
+@page "/PastPairingsDropDown"
+@using System.Text;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Matches</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .boxes {
+            background-color: white;
+            border-radius: 10px;
+            align-items: center;
+            padding: 40px;
+            width: auto;
+            margin: auto;
+
+        }
+        .boxheaders {
+            text-align: center;
+            font-weight: bold;
+            color: #012169; 
+        }
+        .past-pairings {
+            padding: 10px;
+            /* background-color: #f8f9fa; */ /* Remove background color */
+            /* border: 1px solid #dee2e6; */ /* Remove border */
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .row{
+            min-width: 100%;
+        }
+        .download-button {
+            background-color: #012169;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            margin: 4px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .delete-button {
+            background-color: #e00025;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            margin: 4px;
+            margin-left:10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .match-date {
+            color: #012169;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0;
+        }
+        .text-end {
+            display: flex;
+            justify-content: space-between; /* Align items with space between them */
+            align-items: center; /* Center items vertically */
+        }
+
+        .button-container {
+            display: flex; /* Use flexbox for buttons */
+        }
+
+        .download-button {
+            margin-left: 10px; /* Adjust spacing between buttons */
+        }
+        .btn-info {
+            background-color: #fff; 
+            color: #012169; 
+            border-color: #fff; 
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-info .button-content {
+            display: flex;
+            align-items: center; 
+        }
+
+        .btn-info svg {
+            margin-right: 5px; 
+        }
+
+        .btn-info:hover {
+            background-color: #fff;
+            color: #012169;
+            border-color: #fff;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+
+
+
+
+    </style>
+    <script>
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+    <script>
+        function getInputValue(id) {
+            var inputElement = document.getElementById(id);
+            return inputElement ? inputElement.value : "";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="row boxes">
+        <div class="col-12">
+            <button class="btn btn-info" @onclick="ChangeStatus">
+                <span class="button-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check-fill align-middle" viewBox="0 0 16 16">
+                        <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                    </svg>
+                    <span class="align-middle">Past Pairings</span>
+                </span>
+                <span>@(closed ? "+" : "-")</span>
+            </button>
+            <div class="collapse @(closed ? "" : "show")">
+                <div class="past-pairings">
+                    @if(PastMatches.Count==0){
+                        <p>There are no past pairings to view here</p>
+                    }
+                    else{
+                        foreach (var record in PastMatches){
+                            <div class="past">
+                                <div class="text-end">
+                                    @if(record.Name==null){
+                                        <p class="match-date">@record.MatchDate.ToString("MMMM dd, yyyy")</p>
+                                    }
+                                    else{
+                                        <p class="match-date">@record.Name</p>
+                                    }
+                                    <div class="button-container">
+                                        <button class="download-button" @onclick="() => ToggleRenameInput(record.Id)">Rename</button>
+                                        @if (showRenameInputs.ContainsKey(record.Id) && showRenameInputs[record.Id])
+                                        {
+                                            <input class="rename-input" id="rename-input-@record.Id" type="text" @onkeypress="(e) => RenameRecord(e, record.Id)">
+                                        }
+                                        <button class="download-button" @onclick="() => GetPairings(record.Id)">View Pairings</button>
+                                        <button class="download-button" @onclick="() => Load(record.Id)">Load Statistics</button>
+                                        <button class="delete-button" @onclick="() => deleteRecord(record.Id)">Delete Record</button>
+                                        
+                                    </div>
+                                </div>
+                                <hr class="spacer">
+                            </div>
+                            
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+@code {
+
+    [Inject] IJSRuntime JS { get; set; }
+    [Parameter]
+    public EventCallback<int> OnClickCallback { get; set; }
+    public List<PastMatchesRecord> PastMatches{get; set;}
+    public bool closed = true;
+    private Dictionary<int, bool> showRenameInputs = new Dictionary<int, bool>();
+
+    public void ChangeStatus() {
+        closed = !closed;
+    }
+
+    public DateTime GetDate() {
+        return DateTime.Now;
+    }
+    protected override void OnInitialized()
+	{
+		GetPastMatches();
+	}
+    public void GetPastMatches(){
+        PastMatches=blueDevilBridgesContext.PastMatchesRecords.OrderByDescending(record => record.Id).ToList();
+    }
+    public async void GetPairings(int id){
+        string csvContent = GenerateCSVContent(id, false);
+        await JS.InvokeVoidAsync("downloadFile", "pair.csv", csvContent);
+    }
+    private async Task Load(int id){
+        await OnClickCallback.InvokeAsync(id);
+    }
+
+    private string GenerateCSVContent(int id, bool stats){
+        var csv = new StringBuilder();
+        if(stats){
+            List<StudentRecord> pastMentees= blueDevilBridgesContext.StudentRecords.Where(a=>a.IterationID==id).ToList();
+            List<AlumniRecord> pastMentors= blueDevilBridgesContext.AlumniRecords.Where(a=>a.IterationID==id).ToList();
+            csv.AppendLine($"Mentees,Total:,{pastMentees.Count}");
+            csv.AppendLine("Year:,Sophomore,Junior,Senior");
+            csv.AppendLine(getYearsString(pastMentees));
+            csv.AppendLine("Major:,African American Studies,Art History,Asian and Middle Eastern Studies,Biology,Biomedical Engineering,Biophysics,Brazilian and Global Portuguese Studies,Chemistry,Civil Engineering,Classical Civilization,Classical Languages,Computer Science,Cultural Anthropology,Dance,Earth and Ocean Sciences,Economics,Electrical and Computer Engineering,English,Environmental Engineering,Environmental Sciences,Environmental Sciences and Policy,Evolutionary Anthropology,French Studies,Gender Sexuality and Feminist Studies,German,Global Cultural Studies,Global Health,History,International Comparative Studies,Italian Studies,Linguistics,Mathematics,Mechanical Engineering,Medieval and Renaissance Studies,Music,Neuroscience,Philosophy,Physics,Political Science,Psychology,Public Policy Studies,Religious Studies,Romance Studies,Russian,Slavic and Eurasian Studies,Sociology,Spanish Latin American and Latino/a Studies,Statistical Science,Theater Studies,Visual Arts,Visual and Media Studies,Undecided");
+            csv.AppendLine(getMajorString(pastMentees));
+            csv.AppendLine("Minor:,African & African American Studies,Art History,Asian American & Diaspora Studies,Asian and Middle Eastern Studies,Biology,Brazilian and Global Portuguese Studies,Chemistry,Cinematic Arts,Classical Archaeology,Classical Civilization,Computational Biology and Bioinformatics,Computational Media,Computer Science,Creative Writing,Cultural Anthropology,Dance,Earth and Climate Sciences,Economics,Education,Electrical and Computer Engineering,Energy Engineering,English,Environmental Sciences and Policy,Evolutionary Anthropology,Finance,French Studies,Gender Sexuality and Feminist Studies,German,Global Cultural Studies,Global Health,Greek,History,Inequality Studies,Italian Studies,Latin,Linguistics,Machine Learning & Artificial Intelligence,Marine Science & Conservation,Mathematics,Medical Sociology,Medieval and Renaissance Studies,Music,Musical Theater,Neuroscience,Philosophy,Photography,Physics,Polish Culture and Language,Political Science,Psychology,Religious Studies,Russian and East European Literatures in Translation,Russian Culture and Language,Sexuality Studies,Sociology,Spanish Studies,Statistical Science,Theater Studies,Visual Arts,Visual and Media Studies");
+            csv.AppendLine(getMinorString(pastMentees));
+            csv.AppendLine("Certificate:,Aerospace Engineering,Architectural Engineering,Child Policy Research,Decision Sciences,Digital Intelligence,Documentary Studies,East Asian Studies,Energy and the Environment,Ethics & Society,Global Development Engineering,Health Policy,Human Rights,Information Science + Information Studies,Innovation & Entrepreneurship,Islamic Studies,Jewish Studies,Latin American Studies,Latino / Latina Studies in the Global South,Markets & Management,Materials Science & Engineering,Philosophy, Politics and Economics,Policy Journalism and Media Studies,Robotics & Automation,Science & the Public,Sustainability Engagement");
+            csv.AppendLine(getCertificateString(pastMentees));
+            csv.AppendLine("Industry:,Technology / Software / IT,Finance / Investment / Banking,Medical,Consulting and professional services,Healthcare,Nursing,Education,Journalism,Marketing / Advertising,Arts / Creative Industries,Non-Profit and Social Services,Law / Legal Services,Hospitality and Tourism,Manufacturing and engineering,Retail and e-commerce,Energy and Utilities,Politics / Government and public sector,Real estate,Construction,Food and beverage,Media Entertainment and Sports,Transportation and logistics,Fashion and Apparel,STEM,Artificial Intelligence / Machine Learning / Data Science,Pharmaceutical,Biotechnology,Research and Development,Telecommunications,Aerospace and Defense,Agricultural and Food Science,Environmental Science,Product / Product Management / UX Design,Veterinary Medicine,Venture Capital,Accounting,Private Equity,Architecture and Design,Military,International Relations,Academia / Higher Ed,Religion,Physical Therapy,Dentistry");
+            csv.AppendLine("Mentors");
+            
+            
+
+        }
+        else{
+            csv.AppendLine("ID,MentorID,Mentor Name,Mentor Email,MenteeID,Mentee Name,Mentee Email,Similarity Score,IterationID");
+            List<PairingRecord> pastPairs= blueDevilBridgesContext.PairingRecords.Where(a=>a.IterationID==id).ToList();
+            if(pastPairs.Count>0){
+                foreach(var record in pastPairs){
+                    var csvLine=new StringBuilder();
+                    Type type = record.GetType();
+                    foreach (var property in type.GetProperties())
+                    {
+                        var propertyValue = property.GetValue(record);
+                        string stringValue = propertyValue.ToString();
+                        csvLine.Append(stringValue);
+                        csvLine.Append(",");
+                        
+                    }
+                    csvLine.Remove(csvLine.Length - 1, 1);
+                    csv.AppendLine(csvLine.ToString());
+                }
+            }
+        }
+        return csv.ToString();
+    }
+    public async void GetStatistics(int id){
+        string csvContent = GenerateCSVContent(id, true);
+        await JS.InvokeVoidAsync("downloadFile", "stats.csv", csvContent);
+    }
+
+    public void ToggleRenameInput(int id) {
+        if (showRenameInputs.ContainsKey(id)) {
+            showRenameInputs[id] = !showRenameInputs[id];
+        } else {
+            showRenameInputs[id] = true;
+        }
+    }
+    public async Task RenameRecord(KeyboardEventArgs e, int id) {
+        if (e.Key == "Enter") {
+            String newName = await JS.InvokeAsync<string>("getInputValue", $"rename-input-{id}");
+            var record = blueDevilBridgesContext.PastMatchesRecords.FirstOrDefault(a => a.Id == id);
+            if (record != null&&newName.Length!=0) {
+                record.Name = newName;
+                blueDevilBridgesContext.Entry(record).State = EntityState.Modified;
+                blueDevilBridgesContext.SaveChanges();
+                await blueDevilBridgesContext.SaveChangesAsync();
+                
+            }
+            showRenameInputs[id] = false; // hide the input after renaming
+        }
+    }
+    public string getYearsString(List<StudentRecord> pastMentees){
+        Dictionary<string,int> years=new Dictionary<string, int>{
+            {"Sophomore",0},
+            {"Junior",0},
+            {"Senior",0}
+        };
+        foreach(var record in pastMentees){
+            years[record.Year]++;
+        }
+        return $"Number Of Students:,{years["Sophomore"]},{years["Junior"]},{years["Senior"]}";
+    }
+    public string getMajorString(List<StudentRecord> pastMentees){
+        Dictionary<string, int> majors = new Dictionary<string, int>
+        {
+            { "African American Studies", 0 },
+            { "Art History", 0 },
+            { "Asian and Middle Eastern Studies", 0 },
+            { "Biology", 0 },
+            { "Biomedical Engineering", 0 },
+            { "Biophysics", 0 },
+            { "Brazilian and Global Portuguese Studies", 0 },
+            { "Chemistry", 0 },
+            { "Civil Engineering", 0 },
+            { "Classical Civilization", 0 },
+            { "Classical Languages", 0 },
+            { "Computer Science", 0 },
+            { "Cultural Anthropology", 0 },
+            { "Dance", 0 },
+            { "Earth and Ocean Sciences", 0 },
+            { "Economics", 0 },
+            { "Electrical and Computer Engineering", 0 },
+            { "English", 0 },
+            { "Environmental Engineering", 0 },
+            { "Environmental Sciences", 0 },
+            { "Environmental Sciences and Policy", 0 },
+            { "Evolutionary Anthropology", 0 },
+            { "French Studies", 0 },
+            { "Gender Sexuality and Feminist Studies", 0 },
+            { "German", 0 },
+            { "Global Cultural Studies", 0 },
+            { "Global Health", 0 },
+            { "History", 0 },
+            { "International Comparative Studies", 0 },
+            { "Italian Studies", 0 },
+            { "Linguistics", 0 },
+            { "Mathematics", 0 },
+            { "Mechanical Engineering", 0 },
+            { "Medieval and Renaissance Studies", 0 },
+            { "Music", 0 },
+            { "Neuroscience", 0 },
+            { "Philosophy", 0 },
+            { "Physics", 0 },
+            { "Political Science", 0 },
+            { "Psychology", 0 },
+            { "Public Policy Studies", 0 },
+            { "Religious Studies", 0 },
+            { "Romance Studies", 0 },
+            { "Russian", 0 },
+            { "Slavic and Eurasian Studies", 0 },
+            { "Sociology", 0 },
+            { "Spanish Latin American and Latino/a Studies", 0 },
+            { "Statistical Science", 0 },
+            { "Theater Studies", 0 },
+            { "Visual Arts", 0 },
+            { "Visual and Media Studies", 0 },
+            { "Undecided", 0 }
+        };
+        foreach(var record in pastMentees){
+            foreach(string major in record.Major){
+                majors[major]++;
+            }
+        }
+        string result = "Number Of Students: ";
+        foreach (var kvp in majors){
+            result += $",{kvp.Value}";
+        }
+        return result;
+    }
+    public string getMinorString(List<StudentRecord> pastMentees){
+    // List of minors
+    List<string> minorsList = new List<string>{
+        "African & African American Studies", "Art History", "Asian American & Diaspora Studies",
+        "Asian and Middle Eastern Studies", "Biology", "Brazilian and Global Portuguese Studies",
+        "Chemistry", "Cinematic Arts", "Classical Archaeology", "Classical Civilization",
+        "Computational Biology and Bioinformatics", "Computational Media", "Computer Science",
+        "Creative Writing", "Cultural Anthropology", "Dance", "Earth and Climate Sciences",
+        "Economics", "Education", "Electrical and Computer Engineering", "Energy Engineering*",
+        "English", "Environmental Sciences and Policy", "Evolutionary Anthropology", "Finance",
+        "French Studies", "Gender, Sexuality, and Feminist Studies", "German", "Global Cultural Studies",
+        "Global Health", "Greek", "History", "Inequality Studies", "Italian Studies", "Latin",
+        "Linguistics", "Machine Learning & Artificial Intelligence", "Marine Science & Conservation",
+        "Mathematics", "Medical Sociology", "Medieval and Renaissance Studies", "Music",
+        "Musical Theater", "Neuroscience", "Philosophy", "Photography", "Physics",
+        "Polish Culture and Language", "Political Science", "Psychology", "Religious Studies",
+        "Russian and East European Literatures in Translation", "Russian Culture and Language",
+        "Sexuality Studies", "Sociology", "Spanish Studies", "Statistical Science", "Theater Studies",
+        "Visual Arts", "Visual and Media Studies"
+    };
+
+    // Initialize dictionary for minors with initial count 0
+    Dictionary<string, int> minors = new Dictionary<string, int>();
+    foreach (var minor in minorsList)
+    {
+        minors.Add(minor, 0);
+    }
+
+    // Count minors for each mentee
+    foreach (var record in pastMentees)
+    {
+        foreach (string minor in record.Minor) // Assuming StudentRecord has a property Minors
+        {
+            if (minors.ContainsKey(minor))
+            {
+                minors[minor]++;
+            }
+            // Handle case where minor from record may not be in dictionary
+            // Alternatively, you can consider adding it if it doesn't exist
+            // else {
+            //    minors.Add(minor, 1);
+            // }
+        }
+    }
+
+    // Constructing the return string
+    string result = "Number Of Students: ";
+    foreach (var kvp in minors)
+    {
+        result += $",{kvp.Value}";
+    }
+    return result;
+}
+public string getCertificateString(List<StudentRecord> pastMentees){
+    // List of certificates
+    string[] Certificates = {
+        "Aerospace Engineering", "Architectural Engineering", "Child Policy Research",
+        "Decision Sciences", "Digital Intelligence", "Documentary Studies", "East Asian Studies",
+        "Energy and the Environment", "Ethics & Society", "Global Development Engineering",
+        "Health Policy", "Human Rights", "Information Science + Information Studies",
+        "Innovation & Entrepreneurship", "Islamic Studies", "Jewish Studies", "Latin American Studies",
+        "Latino / Latina Studies in the Global South", "Markets & Management", 
+        "Materials Science & Engineering", "Philosophy Politics and Economics",
+        "Policy Journalism and Media Studies", "Robotics & Automation", "Science & the Public",
+        "Sustainability Engagement"
+        };
+    Console.Write(Certificates.Length);
+    // Initialize dictionary for certificates with initial count 0
+    Dictionary<string, int> certificates = new Dictionary<string, int>();
+    foreach (var certificate in Certificates)
+    {
+        certificates.Add(certificate, 0);
+    }
+
+    // Count certificates for each mentee
+    foreach (var record in pastMentees)
+    {
+        foreach (string certificate in record.Certificate) // Assuming StudentRecord has a property Certificates
+        {
+            if (certificates.ContainsKey(certificate))
+            {
+                certificates[certificate]++;
+            }
+            // Handle case where certificate from record may not be in dictionary
+            // Alternatively, you can consider adding it if it doesn't exist
+            // else {
+            //    certificates.Add(certificate, 1);
+            // }
+        }
+    }
+
+    // Constructing the return string
+    string result = "Number Of Students: ";
+    foreach (var kvp in certificates)
+    {
+        result += $",{kvp.Value}";
+    }
+    return result;
+}
+    public async Task deleteRecord(int id)
+    {
+        List<PairingRecord> pastPairs = blueDevilBridgesContext.PairingRecords.Where(a => a.IterationID == id).ToList();
+        List<StudentRecord> pastStudents = blueDevilBridgesContext.StudentRecords.Where(a => a.IterationID == id).ToList();
+        List<AlumniRecord> pastAlumni = blueDevilBridgesContext.AlumniRecords.Where(a => a.IterationID == id).ToList();
+        PastMatchesRecord pastMatch = blueDevilBridgesContext.PastMatchesRecords.FirstOrDefault(a => a.Id == id);
+
+        if (pastMatch != null)
+        {
+            blueDevilBridgesContext.PairingRecords.RemoveRange(pastPairs);
+            blueDevilBridgesContext.StudentRecords.RemoveRange(pastStudents);
+            blueDevilBridgesContext.AlumniRecords.RemoveRange(pastAlumni);
+            blueDevilBridgesContext.PastMatchesRecords.Remove(pastMatch);
+
+            await blueDevilBridgesContext.SaveChangesAsync();
+
+            // Update the UI immediately after deletion
+            GetPastMatches();
+        }
+    }
+
+}

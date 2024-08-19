@@ -1,0 +1,46 @@
+﻿<!-- Creates a top row with padding and dark-themed navigation bar -->
+<div class="top-row ps-3 navbar navbar-dark">
+    <!-- Creates a container that makes the navbar content fluid -->
+    <div class="container-fluid">
+        <!-- Creates a clickable brand link with the text "Blue Devil Bridges" -->
+        <a class="navbar-brand ms-2" href="">Blue Devil Bridges</a>
+    </div>
+</div>
+
+<!-- Creates a checkbox input element used as a toggler for the navigation menu -->
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<!-- Creates a scrollable navigation div that toggles the navbar visibility when clicked -->
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <!-- Defines a vertical navigation menu -->
+    <nav class="flex-column">
+        <!-- Creates a navigation item with padding -->
+        <div class="nav-item px-3">
+            <!-- Navigation link to the home page with a house icon -->
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <!-- Creates another navigation item with padding -->
+        <div class="nav-item px-3">
+            <!-- Navigation link to the pairing page with a people icon -->
+            <NavLink class="nav-link" href="Pairing" Match="NavLinkMatch.All">
+                <span class="bi bi-people-fill-nav-menu" aria-hidden="true"></span> Generate Pairings
+            </NavLink>
+        </div>
+        <!-- Creates another navigation item with padding -->
+        <div class="nav-item px-3">
+            <!-- Navigation link to the statistics page with a plus icon -->
+            <NavLink class="nav-link" href="Statistics">
+                <span class="bi bi-bar-chart-line-fill-nav-menu" aria-hidden="true"></span> Statistics
+            </NavLink>
+        </div>
+        <!-- Creates another navigation item with padding -->
+        <div class="nav-item px-3">
+            <!-- Navigation link to the past matches page with a list icon -->
+            <NavLink class="nav-link" href="Past-Matches">
+                <span class="bi bi-calendar-check-fill-nav-menu" aria-hidden="true"></span> Past Matches
+            </NavLink>
+        </div>
+    </nav>
+</div>

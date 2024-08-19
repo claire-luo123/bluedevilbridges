@@ -1,0 +1,95 @@
+@page "/scroll"
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+        }
+        .background-container {
+            position: relative;
+            height: 200vh;
+            overflow-y: scroll;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/lLvtBr9.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .welcome-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            color: black;
+        }
+        .welcome-button {
+            background-color: #00539b;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .container img {
+            max-width: 25%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-image"></div>
+        <div class="container">
+            <div class="row">
+                <img src="https://static.wixstatic.com/media/e9fa2c_5756d22ef1ee4d8ab96d62a6d21a1396~mv2.png/v1/fill/w_774,h_774,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/BlueDevilBridges.png" class="img-fluid" alt="Blue Devil Bridges">
+            </div>
+            <div class="row mt-3">
+                <div class="welcome-box">
+                    <h1 class="text">Welcome</h1>
+                    <a href="NewPair" class="welcome-button">Login with Duke Credentials</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('scroll', function () {
+            const background = document.querySelector('.background-image');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 0) {
+                background.style.backgroundImage = "url('https://imgur.com/9dwDKqI.jpeg')";
+            } else {
+                background.style.backgroundImage = "url('https://i.imgur.com/lLvtBr9.jpeg')";
+            }
+        });
+    </script>
+</body>

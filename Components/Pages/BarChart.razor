@@ -1,0 +1,63 @@
+@using ApexCharts
+@* component for the histogram at the top of the dashboard *@
+
+    <ApexChart TItem="MyData"
+               Title="Match Data">
+
+        <ApexPointSeries TItem="MyData"
+                         Items="Data"
+                         Name="Number of Pairs"
+                         SeriesType="SeriesType.Bar"
+                         XValue="e => e.SimilarityScore"
+                         YValue="e => e.AmntofPairs" />
+
+    </ApexChart>
+    
+@code {
+    [Parameter]public List<double> SimilarityScores { get; set; }
+    private List<MyData> Data { get; set; } = new();
+    private int[] scoreCounter=new int[10];
+
+    public static string BarColor { get; set; } = "#00539B";
+
+    private ApexChartOptions<MyData> opts = new ApexChartOptions<MyData> {
+        Xaxis = new XAxis {
+            Title = new AxisTitle {
+                Text = "Similarity Scores"
+            }
+        },
+        Yaxis = new List<YAxis> {
+            new YAxis
+            {
+                Title = new AxisTitle {
+                    Text = "Number of Pairs"
+                }
+            }
+        },
+        Colors = new List<string> { BarColor }
+    };
+    protected override void OnInitialized()
+    {
+        foreach(var score in SimilarityScores){
+            scoreCounter[(int)(score-1)/10]++;
+        }
+        Data.Add(new MyData { SimilarityScore = "0-10", AmntofPairs = scoreCounter[0]});
+        Data.Add(new MyData { SimilarityScore = "11-20", AmntofPairs = scoreCounter[1]});
+        Data.Add(new MyData { SimilarityScore = "21-30", AmntofPairs = scoreCounter[2] });
+        Data.Add(new MyData { SimilarityScore = "31-40", AmntofPairs = scoreCounter[3] });
+        Data.Add(new MyData { SimilarityScore = "41-50", AmntofPairs = scoreCounter[4] });
+        Data.Add(new MyData { SimilarityScore = "51-60", AmntofPairs = scoreCounter[5] });
+        Data.Add(new MyData { SimilarityScore = "61-70", AmntofPairs = scoreCounter[6] });
+        Data.Add(new MyData { SimilarityScore = "71-80", AmntofPairs = scoreCounter[7] });
+        Data.Add(new MyData { SimilarityScore = "81-90", AmntofPairs = scoreCounter[8] });
+        Data.Add(new MyData { SimilarityScore = "91-100", AmntofPairs = scoreCounter[9] });
+    }
+
+    public class MyData
+    {
+        public string SimilarityScore { get; set; }
+        public int AmntofPairs {get; set;}
+        
+        
+    }
+}

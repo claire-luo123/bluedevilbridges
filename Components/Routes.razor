@@ -1,0 +1,24 @@
+﻿<Router AppAssembly="typeof(Program).Assembly">
+	<Found Context="routeData">
+		@* only show website to allowed users *@
+		@if (User.IsAllowed)
+		{
+			<CascadingValue Value="User" Name="User">
+				<RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+			</CascadingValue>
+			<FocusOnNavigate RouteData="routeData" Selector="h1" />
+		}
+		else
+		{
+			<div class="mt-5 text-center">
+				<h1>No Access</h1>
+				<p>NetId unavailable or does not have access.</p>
+			</div>
+		}
+	</Found>
+</Router>
+
+@code {
+	[Parameter]
+	public User User { get; set; }
+}

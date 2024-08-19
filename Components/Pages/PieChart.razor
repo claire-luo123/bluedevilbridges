@@ -1,0 +1,39 @@
+@using ApexCharts
+@* component for pie chart in statistics section *@
+
+<ApexChart 
+    TItem="PieSeriesData" 
+    Title="Distribution of Student Years">
+
+    <ApexPointSeries 
+        TItem="PieSeriesData" 
+        Name="Dummy Series" 
+        Items="Chartdata" 
+        SeriesType="SeriesType.Pie"
+        XValue="@(e => e.Label)"
+        YAggregate="@(e => e.Sum(e => e.Value))"
+        OrderByDescending="e=>e.Y"
+        />
+</ApexChart>
+
+@code {
+    [Parameter]
+    public List<PieSeriesData> Chartdata {get; set;}
+
+    public static List<string> Colors { get; set; } = new List<string> {
+        "#00539B", 
+        "#C84E00", 
+        "#A1B70D"
+    };
+
+    private ApexChartOptions<PieSeriesData> opts = new ApexChartOptions<PieSeriesData> {
+        Colors = Colors
+    };
+    
+
+    public class PieSeriesData {
+        public string Label { get; set; }
+        public decimal Value { get; set; }
+
+    }
+}

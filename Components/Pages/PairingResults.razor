@@ -1,0 +1,36 @@
+@code {
+    [Parameter]
+    public string Status { get; set; }
+
+    [Parameter]
+    public string OutputFile { get; set; }
+}
+
+<div class="contain">
+    <p class="paragraph">@Status</p>
+    @if (!string.IsNullOrEmpty(OutputFile))
+    {
+        <a href="@OutputFile" download="results.csv" class="download-button">Download Pairing Results</a>
+    }
+</div>
+
+<style>
+.contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.download-button {
+    background-color: #012169;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+</style>

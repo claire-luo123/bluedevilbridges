@@ -1,0 +1,34 @@
+@inject NavigationManager NavigationManager;
+@code {
+    [Parameter]
+    public string Title{get; set;}
+
+    private void RedirectToHome() {
+        NavigationManager.NavigateTo("/");
+    }
+}
+
+<div class="header" @onclick="RedirectToHome">
+    <h1 class="text">@Title</h1>
+</div>
+
+
+<style>
+    .header {
+        background-image: url('https://i.imgur.com/lLvtBr9.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    .text{
+        font-family: 'Open Sans', sans-serif;  /* not updating */
+        color: #FFFFFF;
+        text-align: center;
+        font-weight: bold;
+        font-size: 5rem;
+    }
+</style>

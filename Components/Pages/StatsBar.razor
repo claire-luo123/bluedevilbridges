@@ -1,0 +1,101 @@
+<style>
+    body {
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    width: 80%;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+    padding: 16px; /* Increase padding for more space */
+    text-align: left;
+}
+
+.custom-table th {
+    background-color: #f2f2f2;
+}
+
+.custom-table td {
+    background-color: #ffffff;
+}
+
+/* Add borders between rows */
+.custom-table tr {
+    border-bottom: 1px solid #ccc; /* Add lines between rows */
+}
+
+/* Make the line between columns transparent */
+.custom-table th, .custom-table td {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.boxheaders {
+    text-align: center;
+    font-weight: bold;
+    color: #012169; /* Change color to #012169 */
+    margin-bottom: 10px; /* Add some space below the header */
+}
+</style>
+<div class=container>
+    <div class="row align-items-center">
+        <div class="col">
+            <h5 class="boxheaders">
+                Similarity Scores
+            </h5>
+            <BarChart SimilarityScores=@simScore/>  
+        </div>
+        <div class="col">
+            <div class="table-container">
+                <h5 class=boxheaders> At A Glance</h5>
+                <table class="custom-table">
+                    <tbody>
+                        <tr>
+                            <th>Number of Pairs</th>
+                            <td>@total</td>
+                        </tr>
+                        <tr>
+                            <th>Mentees</th>
+                            <td>@mentees</td>
+                        </tr>
+                        <tr>
+                            <th>Mentors</th>
+                            <td>@mentors</td>
+                        </tr>
+                        <tr>
+                            <th>Average Similarity Score</th>
+                            <td>@avg</td>
+                        </tr>
+                        <tr>
+                            <th>Maximum Similarity Score</th>
+                            <td>@max</td>
+                        </tr>
+                        <tr>
+                            <th>Minimum Similarity Score</th>
+                            <td>@min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
+@code{
+    [Parameter]public int total {get;set;}
+    [Parameter]public int mentees {get;set;}
+    [Parameter]public int mentors {get;set;}
+    [Parameter]public double avg {get;set;}
+    [Parameter]public double max {get;set;}
+    [Parameter]public double min {get;set;}
+    [Parameter]public List<double> simScore{get; set;}
+
+}
