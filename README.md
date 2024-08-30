@@ -1,5 +1,5 @@
 # Blue Devil Bridges
-## This repository contains code from the Blue Devil Bridges project that I worked on as software engineer intern through Duke University Office of Information Technology's Code+ Program during the summer of 2024. I'd like to acknowledge the other contributors of this project: Jason Okoro, Catherine Yang, Latham Hall, Eric Welborn
+*This repository contains code from the Blue Devil Bridges project that I worked on as software engineer intern through Duke University Office of Information Technology's Code+ Program during the summer of 2024. I'd like to acknowledge the other contributors of this project: Jason Okoro, Catherine Yang, Latham Hall, Eric Welborn
 
 This guide provides necessary instructions on how to use the Blue Devil Bridges website and format the CSV file used in the mentor-mentee matching algorithm.
 
